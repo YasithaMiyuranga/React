@@ -2,19 +2,25 @@ import React from 'react'
 import MyUniversity from './MyUniversity'
 const ListGroup = () => {
 
-  const cities = ['New York', 'San Francisco', 'Tokyo', 'London', 'Paris']
+  const cities : string[] = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"]
 
   return (
-    <>
-    <div className="text-3xl text-blue-600">This is ListGroup component</div>
-      <MyUniversity />
-      <ul>
-        {cities.map((city: string) => (
-          <li key={city} className="font-bold text-2xl text-yellow-500">{city}</li>
-        ))}
-      </ul>
-    </>
-  )
+      <div>
+        <div className="text-2xl font-bold text-blue-600 mt-4">City List</div>
+        <MyUniversity />
+        {/* Conditional Rendering Example */}
+        {cities.length !== 0 ? (
+        <ul>
+          {cities.map((city: string, index: number) => (
+            <li key={index} className="text-lg text-gray-700">
+              {city}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-lg text-gray-500">No cities available.</p>)}
+      </div>
+  );
 }
 
 export default ListGroup

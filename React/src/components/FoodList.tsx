@@ -1,19 +1,27 @@
 import React from 'react'
 
 const FoodList = () => {
-    const foods = ['Pizza', 'Burger', 'Sushi', 'Pasta', 'Salad']
+    const Foods: string[] = ['Pizza', 'Burger', 'Sushi', 'Pasta', 'Salad']
   return (
     <>
-      <div>
-        <h2 className="text-2xl font-bold text-red-600">Food List</h2>
-        <ul>
-          {foods.map((food: string) => (
-            <li key={food} className="text-lg text-gray-700">{food}</li>
+      {/* And Operator Example */}
+      {Foods && (
+        <ul className="mt-10 flex gap-5">
+          {Foods.map((food: string) => (
+            <button 
+            key={food} 
+            className="font-bold text-3xl text-green-500 border-2 cursor-pointer"
+            onClick={() => {
+                console.log(food)
+            }}
+            >
+            {food}
+            </button>
           ))}
         </ul>
-      </div>
+      )}
     </>
   );
-}
+} 
 
 export default FoodList
