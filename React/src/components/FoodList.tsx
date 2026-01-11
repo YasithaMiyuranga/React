@@ -3,9 +3,10 @@ import React, { useState } from "react";
 
 interface FoodListProps {
   username: string;
+  userlanguage: string;
 }
 
-const FoodList = ({username}: FoodListProps) => {
+const FoodList = ({username, userlanguage}: FoodListProps) => {
   // State variables for form inputs
   // const [name, setName] = useState("");
   // const [address, setAddress] = useState("");
@@ -22,7 +23,8 @@ const FoodList = ({username}: FoodListProps) => {
 
   return (
     <>
-    <h2 className="text-4xl text-purple-600">{username}</h2>
+      <h2 className="text-4xl text-purple-600">{username}</h2>
+      <h2 className="font-bold text-4xl text-purple-600">{userlanguage}</h2>
       <form>
         <div className="flex flex-col gap-2 border-2 p-5 w-full mt-10">
           {/* Name Input */}
@@ -45,7 +47,9 @@ const FoodList = ({username}: FoodListProps) => {
             id="address"
             type="text"
             value={person.address}
-            onChange={(event) => setPerson({...person, address: event.target.value})}
+            onChange={(event) =>
+              setPerson({ ...person, address: event.target.value })
+            }
           />
 
           {/* City Input */}
@@ -54,7 +58,9 @@ const FoodList = ({username}: FoodListProps) => {
             id="city"
             type="text"
             value={person.city}
-            onChange={(event) => setPerson({...person, city: event.target.value})}
+            onChange={(event) =>
+              setPerson({ ...person, city: event.target.value })
+            }
           />
 
           {/* School Input */}
@@ -63,7 +69,9 @@ const FoodList = ({username}: FoodListProps) => {
             id="school"
             type="text"
             value={person.school}
-            onChange={(event) => setPerson({...person, school: event.target.value})}
+            onChange={(event) =>
+              setPerson({ ...person, school: event.target.value })
+            }
           />
 
           {/* Submit Button with Console Log */}
