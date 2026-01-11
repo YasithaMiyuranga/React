@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 
-const FoodList = () => {
+
+interface FoodListProps {
+  username: string;
+}
+
+const FoodList = ({username}: FoodListProps) => {
   // State variables for form inputs
   // const [name, setName] = useState("");
   // const [address, setAddress] = useState("");
@@ -17,6 +22,7 @@ const FoodList = () => {
 
   return (
     <>
+    <h2 className="text-4xl text-purple-600">{username}</h2>
       <form>
         <div className="flex flex-col gap-2 border-2 p-5 w-full mt-10">
           {/* Name Input */}
