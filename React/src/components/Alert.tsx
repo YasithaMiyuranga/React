@@ -10,7 +10,7 @@ const Alert = ({ children }: AlertProps) => {
       onClick={() => {
         alert("Updated Details");
       }}
-      className="border-2 p-2 m-2"
+      style={{color: "red", borderWidth:2, borderColor:"blue"}}
     >
       {children}
     </button>
