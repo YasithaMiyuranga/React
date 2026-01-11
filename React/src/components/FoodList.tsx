@@ -1,32 +1,69 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 const FoodList = () => {
-    const Foods: string[] = ['Pizza', 'Burger', 'Sushi', 'Pasta', 'Salad']
-    const [cars, setCars] = useState("toyota");
+  // State variables for form inputs
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [school, setSchool] = useState("");
 
-    const handleChangeValue = (food: string) => {
-      console.log(food);
-      setCars(food);
-    }
-    return (
-      <>
-        <p className="text-2xl font-bold text-pink-600">{cars}</p>
-        {/* And Operator Example */}
-        {Foods && (
-          <ul className="mt-10 flex gap-5">
-            {Foods.map((food: string) => (
-              <button
-                key={food}
-                className="font-bold text-3xl text-green-500 border-2 cursor-pointer"
-                onClick={() => handleChangeValue(food)}
-              >
-                {food}
-              </button>
-            ))}
-          </ul>
-        )}
-      </>
-    );
-} 
+  return (
+    <>
+      <form>
+        <div className="flex flex-col gap-2 border-2 p-5 w-full mt-10">
+          {/* Name Input */}
+          <input
+            className="w-full border-2 "
+            id="name"
+            type="text"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
 
-export default FoodList
+          {/* Address Input */}
+          <input
+            className="w-full border-2 "
+            id="address"
+            type="text"
+            value={address}
+            onChange={(event) => setAddress(event.target.value)}
+          />
+
+          {/* City Input */}
+          <input
+            className="w-full border-2 "
+            id="city"
+            type="text"
+            value={city}
+            onChange={(event) => setCity(event.target.value)}
+          />
+
+          {/* School Input */}
+          <input
+            className="w-full border-2 "
+            id="school"
+            type="text"
+            value={school}
+            onChange={(event) => setSchool(event.target.value)}
+          />
+
+          {/* Submit Button with Console Log */}
+          <button
+            type="button"
+            className="w-full border-2"
+            onClick={() => {
+              console.log(name);
+              console.log(address);
+              console.log(city);
+              console.log(school);
+            }}
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </>
+  );
+};
+
+export default FoodList;
