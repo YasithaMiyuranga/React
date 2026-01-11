@@ -5,12 +5,20 @@ interface AlertProps {
 }
 
 const Alert = ({ children }: AlertProps) => {
+
+    const myStyle = {
+        color: "red", 
+        backgroundColor: "yellow",
+        borderWidth:2, 
+        borderColor:"blue"
+    };
+
   return (
     <button
       onClick={() => {
         alert("Updated Details");
       }}
-      style={{color: "red", borderWidth:2, borderColor:"blue"}}
+      style={myStyle}
     >
       {children}
     </button>
