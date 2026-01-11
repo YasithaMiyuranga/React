@@ -6,7 +6,14 @@ const App = () => {
 
   const handleClick = () => {
     // Add a new tag to the tags array
-    setTags([...tags, "tag4"]);
+    // setTags([...tags, "tag4"]);
+
+    // Remove a tag from the tags array
+    setTags(
+      tags.filter((tag) => {
+        return tag !== "tag1";
+      })
+    );
   };
 
   return (
