@@ -4,9 +4,10 @@ import React, { useState } from "react";
 interface FoodListProps {
   username: string;
   userlanguage: string;
+  passData: () => void;
 }
 
-const FoodList = ({username, userlanguage}: FoodListProps) => {
+const FoodList = ({username, userlanguage, passData}: FoodListProps) => {
   // State variables for form inputs
   // const [name, setName] = useState("");
   // const [address, setAddress] = useState("");
@@ -79,6 +80,7 @@ const FoodList = ({username, userlanguage}: FoodListProps) => {
             type="button"
             className="w-full border-2"
             onClick={() => {
+              passData();
               console.log(person.name);
               console.log(person.address);
               console.log(person.city);
