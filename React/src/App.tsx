@@ -8,12 +8,23 @@ const App = () => {
     // Add a new tag to the tags array
     // setTags([...tags, "tag4"]);
 
+
     // Remove a tag from the tags array
+    // setTags(
+    //   tags.filter((tag) => {
+    //     return tag !== "tag1";
+    //   })
+    // );
+
+
+    // Update a tag in the tags array
     setTags(
-      tags.filter((tag) => {
-        return tag !== "tag1";
+      tags.map((tag) => {
+        return tag === "tag1" ? "updatedTag1" : tag;
       })
     );
+
+    
   };
 
   return (
