@@ -1,4 +1,5 @@
 import React, { type ReactNode } from "react";
+import "../App.css";
 
 interface AlertProps {
   children: ReactNode;
@@ -6,19 +7,14 @@ interface AlertProps {
 
 const Alert = ({ children }: AlertProps) => {
 
-    const myStyle = {
-        color: "red", 
-        backgroundColor: "yellow",
-        borderWidth:2, 
-        borderColor:"blue"
-    };
+    
 
   return (
     <button
       onClick={() => {
         alert("Updated Details");
       }}
-      style={myStyle}
+      className="alert"
     >
       {children}
     </button>

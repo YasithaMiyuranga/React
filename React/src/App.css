@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+.alert{
+     color:royalblue;
+     background-color: aqua;
+     border-width: 2px;
+        border-color: blue;
+
+}
