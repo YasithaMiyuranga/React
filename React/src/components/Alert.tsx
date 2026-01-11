@@ -1,20 +1,17 @@
 import React, { type ReactNode } from "react";
-import "../App.css";
+import styles from "./Alert.module.css"; 
 
 interface AlertProps {
   children: ReactNode;
 }
 
 const Alert = ({ children }: AlertProps) => {
-
-    
-
   return (
     <button
       onClick={() => {
         alert("Updated Details");
       }}
-      className="alert"
+      className={styles.alert} 
     >
       {children}
     </button>
