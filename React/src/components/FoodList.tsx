@@ -2,10 +2,18 @@ import React, { useState } from "react";
 
 const FoodList = () => {
   // State variables for form inputs
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [school, setSchool] = useState("");
+  // const [name, setName] = useState("");
+  // const [address, setAddress] = useState("");
+  // const [city, setCity] = useState("");
+  // const [school, setSchool] = useState("");
+
+  //Advanced Logical thinking
+  const[person,setPerson] = useState({
+    name:"",
+    address:"",
+    city:"",
+    school:""
+  });
 
   return (
     <>
@@ -16,8 +24,13 @@ const FoodList = () => {
             className="w-full border-2 "
             id="name"
             type="text"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
+            value={person.name}
+            onChange={(event) => {
+              setPerson({
+                ...person,
+                name: event.target.value,
+              });
+            }}
           />
 
           {/* Address Input */}
@@ -25,8 +38,8 @@ const FoodList = () => {
             className="w-full border-2 "
             id="address"
             type="text"
-            value={address}
-            onChange={(event) => setAddress(event.target.value)}
+            value={person.address}
+            onChange={(event) => setPerson({...person, address: event.target.value})}
           />
 
           {/* City Input */}
@@ -34,8 +47,8 @@ const FoodList = () => {
             className="w-full border-2 "
             id="city"
             type="text"
-            value={city}
-            onChange={(event) => setCity(event.target.value)}
+            value={person.city}
+            onChange={(event) => setPerson({...person, city: event.target.value})}
           />
 
           {/* School Input */}
@@ -43,8 +56,8 @@ const FoodList = () => {
             className="w-full border-2 "
             id="school"
             type="text"
-            value={school}
-            onChange={(event) => setSchool(event.target.value)}
+            value={person.school}
+            onChange={(event) => setPerson({...person, school: event.target.value})}
           />
 
           {/* Submit Button with Console Log */}
@@ -52,10 +65,10 @@ const FoodList = () => {
             type="button"
             className="w-full border-2"
             onClick={() => {
-              console.log(name);
-              console.log(address);
-              console.log(city);
-              console.log(school);
+              console.log(person.name);
+              console.log(person.address);
+              console.log(person.city);
+              console.log(person.school);
             }}
           >
             Submit
