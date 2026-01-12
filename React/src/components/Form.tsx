@@ -1,49 +1,22 @@
+
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const Form = () => {
-  // 1. සියලුම field එකම state object එකකට ගැනීම
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    age: "",
-    gender: "",
-    course: "",
-  });
 
-  // 2. සියලුම input වල වෙනස්කම් හඳුනාගන්නා පොදු function එක
-  const handleChange = (e: any) => {
-    // Input field එකෙන් name සහ value ලබාගැනීම
-    //Destructuring the event target object
-    const { name, value } = e.target;
-
-    // කලින් තිබූ දත්ත (form) ආරක්ෂා කරගනිමින් අදාළ 'name' එක පමණක් update කිරීම
-    setForm((form) => ({
-      ...form,
-      [name]: value,
-    }));
-  };
-
-  // 3. Form එක Submit කරන විට ක්‍රියාත්මක වන function එක
-  const handleSubmit = (e: any) => {
-    e.preventDefault(); // පිටුව refresh වීම වළක්වයි
-
-    // JSON ආකාරයට දත්ත alert එකකින් පෙන්වීම
-    // alert(`Student Data:\n${JSON.stringify(form, null, 2)}`);
-    console.log("Submitted Form Data:", form);
-  };
+  const {register, handleSubmit} = useForm();
+  console.log(register("firstName"));
 
   return (
     <div className="p-10 bg-gray-900 min-h-screen text-white">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-2 max-w-sm">
+      <form onSubmit={handleSubmit((data) => console.log(data))} 
+      className="flex flex-col gap-2 max-w-sm">
         {/* First Name */}
         <label>
           First Name:
           <input
             type="text"
-            name="firstName"
-            value={form.firstName}
-            onChange={handleChange}
+            {...register("firstName")}
             className="w-full bg-gray-800 border p-1"
             required
           />
@@ -55,9 +28,7 @@ const Form = () => {
           Last Name:
           <input
             type="text"
-            name="lastName"
-            value={form.lastName}
-            onChange={handleChange}
+            {...register("lastName")}
             className="w-full bg-gray-800 border p-1"
             required
           />
@@ -69,9 +40,7 @@ const Form = () => {
           Email:
           <input
             type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
+            {...register("email")}
             className="w-full bg-gray-800 border p-1"
             required
           />
@@ -83,9 +52,7 @@ const Form = () => {
           Age:
           <input
             type="number"
-            name="age"
-            value={form.age}
-            onChange={handleChange}
+            {...register("age")}
             min="16"
             max="100"
             className="w-full bg-gray-800 border p-1"
@@ -98,9 +65,7 @@ const Form = () => {
         <label>
           Gender:
           <select
-            name="gender"
-            value={form.gender}
-            onChange={handleChange}
+            {...register("gender")}
             className="w-full bg-gray-800 border p-1"
             required
           >
@@ -117,9 +82,7 @@ const Form = () => {
           Course:
           <input
             type="text"
-            name="course"
-            value={form.course}
-            onChange={handleChange}
+            {...register("course")}
             className="w-full bg-gray-800 border p-1"
             required
           />
