@@ -1,11 +1,23 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type FieldValues } from "react-hook-form";
+import z from "zod";
+
+const schema = z.object({
+  firstName: z.string() .min(5, "First Name must be at least 5 characters"),
+  lastName: z.string().min(2, "Last Name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  age: z.number().min(16, "Age must be at least 16").optional(),
+  course: z.string().min(2, "Course name is required"),
+});
+
+type FormData = z.infer<typeof schema>;
 
 const Form = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<FormData>({resolver: zodResolver(schema)});
 
   const onSubmit = (data: FieldValues) => {
     console.log(data);
@@ -22,13 +34,7 @@ const Form = () => {
           First Name:
           <input
             type="text"
-            {...register("firstName", {
-              required: "First Name is required",
-              minLength: {
-                value: 5,
-                message: "First Name must be at least 5 characters",
-              },
-            })}
+            {...register("firstName",)}
             className="w-full bg-gray-800 border p-1"
           />
           {errors.firstName && (
@@ -43,7 +49,7 @@ const Form = () => {
           Last Name:
           <input
             type="text"
-            {...register("lastName", { required: "Last Name is required" })}
+            {...register("lastName",)}
             className="w-full bg-gray-800 border p-1"
           />
           {errors.lastName && (
@@ -58,13 +64,7 @@ const Form = () => {
           Email:
           <input
             type="email"
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: "Invalid email address",
-              },
-            })}
+            {...register("email",)}
             className="w-full bg-gray-800 border p-1"
           />
           {errors.email && (
@@ -79,11 +79,7 @@ const Form = () => {
           Age:
           <input
             type="number"
-            {...register("age", {
-              required: "Age is required",
-              min: { value: 16, message: "Age must be at least 16" },
-              max: { value: 100, message: "Age must be under 100" },
-            })}
+            {...register("age",)}
             className="w-full bg-gray-800 border p-1"
           />
           {errors.age && (
@@ -93,31 +89,12 @@ const Form = () => {
           )}
         </label>
 
-        {/* Gender Selection */}
-        <label>
-          Gender:
-          <select
-            {...register("gender", { required: "Please select your gender" })}
-            className="w-full bg-gray-800 border p-1"
-          >
-            <option value="">--Select--</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-          {errors.gender && (
-            <p className="text-red-500 text-sm">
-              {errors.gender.message as string}
-            </p>
-          )}
-        </label>
-
         {/* Course */}
         <label>
           Course:
           <input
             type="text"
-            {...register("course", { required: "Course name is required" })}
+            {...register("course",)}
             className="w-full bg-gray-800 border p-1"
           />
           {errors.course && (
