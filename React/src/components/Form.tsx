@@ -11,7 +11,7 @@ const Form = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors ,isValid},
   } = useForm<FormData>({resolver: zodResolver(schema)});
 
   const onSubmit = (data: FieldValues) => {
@@ -29,7 +29,7 @@ const Form = () => {
           First Name:
           <input
             type="text"
-            {...register("firstName",)}
+            {...register("firstName")}
             className="w-full bg-gray-800 border p-1"
           />
           {errors.firstName && (
@@ -44,7 +44,7 @@ const Form = () => {
           Last Name:
           <input
             type="text"
-            {...register("lastName",)}
+            {...register("lastName")}
             className="w-full bg-gray-800 border p-1"
           />
           {errors.lastName && (
@@ -59,7 +59,7 @@ const Form = () => {
           Email:
           <input
             type="email"
-            {...register("email",)}
+            {...register("email")}
             className="w-full bg-gray-800 border p-1"
           />
           {errors.email && (
@@ -74,7 +74,7 @@ const Form = () => {
           Age:
           <input
             type="number"
-            {...register("age",)}
+            {...register("age")}
             className="w-full bg-gray-800 border p-1"
           />
           {errors.age && (
@@ -89,7 +89,7 @@ const Form = () => {
           Course:
           <input
             type="text"
-            {...register("course",)}
+            {...register("course")}
             className="w-full bg-gray-800 border p-1"
           />
           {errors.course && (
@@ -100,6 +100,8 @@ const Form = () => {
         </label>
 
         <button
+          // disabled={!isValid}
+          disabled={isValid === false}
           type="submit"
           className="bg-blue-600 mt-4 p-2 font-bold hover:bg-blue-700 transition"
         >
