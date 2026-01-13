@@ -1,16 +1,21 @@
-import { useEffect } from "react";
-
+import { useEffect, useState } from "react";
 
 const App = () => {
+  const [count, setCount] = useState(0);
+
   useEffect(() => {
-    document.title = "My React App";
-    console.log("App component mounted");
+    document.title = "Yasitha";
+    console.log("App");
+
+    setCount(count + 1);
+    console.log(count);
   });
+
   return (
     <>
-      <h1 className="text-3xl font-bold underline text-center my-5"> This is my App </h1>
+      <h1 className="text-7xl font-bold">This is my App</h1>
     </>
   );
-}
+};
 
-export default App
+export default App;
