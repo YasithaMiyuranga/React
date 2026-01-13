@@ -1,29 +1,26 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 const App = () => {
-  const [count, setCount] = useState(0);
-  const [number, setNumber] = useState(10);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    console.log("Count : ", count);
-    console.log("Number : ", number);
-  }, [count, number]);
+    axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
+      // console.log(response.data);
+      setUsers(response.data);
+    });
+  }, []);
 
   return (
     <>
-      <h1 className="text-7xl font-bold">This is my App</h1>
-      <button
-        className="text-4xl font-bold border-2 cursor-pointer p-4 rounded-2xl"
-        onClick={() => setCount(count + 1)}
-      >
-        Click
-      </button>
-      <button
-        className="text-4xl font-bold border-2 cursor-pointer p-4 rounded-2xl"
-        onClick={() => setNumber(number + 1)}
-      >
-        Remove
-      </button>
+      <h1>Users</h1>
+      <ul>
+        {users.map((user) => (
+          <li className="text-2xl font-bold" key={user.id}>
+            {user.name}
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
